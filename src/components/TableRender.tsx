@@ -16,6 +16,7 @@ const TableRender: React.FC = () => {
       className={`min-h-screen flex flex-col space-y-4 items-center justify-center ${theme.background} ${theme.color}`}
       style={{
         color: theme === themes.light ? "white" : "black",
+        backgroundColor: theme === themes.light ? "white" : "black",
       }}
     >
       <div className="w-[90%] mt-20">
