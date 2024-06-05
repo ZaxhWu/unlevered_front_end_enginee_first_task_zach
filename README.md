@@ -18,11 +18,13 @@ Make sure you have the following installed on your system:
 - Node.js
 #### Installation
 1. Clone the repository:
-```git clone https://github.com/yourusername/financial-dashboard.git
+```
+git clone https://github.com/yourusername/financial-dashboard.git
 cd financial-dashboard
 ```
 1. Install the dependencies:
-```npm install
+```
+npm install
 ```
 #### Running the Application
 1. Start the dummy API server using Docker:
