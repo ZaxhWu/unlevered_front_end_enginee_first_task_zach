@@ -30,7 +30,8 @@ npm install
 1. Start the dummy API server using Docker:
 	
 2. Start the React application:
-```npm run dev
+```
+npm run dev
 ```
 1. Open your browser and navigate to http://localhost:3000 to view the application.
 ### Project Structure
