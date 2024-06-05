@@ -1,10 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ReactApexChart from "react-apexcharts";
 import axios from "axios";
 import { useTheme } from "@/context/ThemeContext";
 import { themes } from "@/styles/themes";
-import ApexCharts from "apexcharts";
+import dynamic from "next/dynamic";
+import { ApexOptions } from "apexcharts";
+
+// 动态导入 ReactApexChart 并禁用 SSR
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const API_KEY = "demo";
 const SYMBOL = "IBM";
@@ -63,7 +68,20 @@ const CandlestickChart: React.FC = () => {
     fetchData();
   }, []);
 
-  const chartOptions: ApexCharts.ApexOptions = {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      import("apexcharts").then((ApexCharts) => {
+        (ApexCharts as any).exec("candlestick-chart", "updateOptions", {
+          chart: {
+            background: theme === themes.dark ? "black" : "white",
+            foreColor: theme === themes.dark ? "white" : "black",
+          },
+        });
+      });
+    }
+  }, [theme]);
+
+  const chartOptions: ApexOptions = {
     chart: {
       id: "candlestick-chart",
       type: "candlestick",
